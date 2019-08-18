@@ -1,0 +1,68 @@
+﻿@model IEnumerable<TRPZ_VOLSWAGEN.Models.ViewModels.Pages.PageVM>
+
+@{
+    ViewBag.Title = "Buy";
+}
+<body class="buy_cars">
+<h2></h2>
+<hr>
+
+
+    @foreach (var item in Model)
+    {<table class="table container">
+    <tr class="bg-light">
+        <th >
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayFor(modelItem => item.Name)
+        </th>
+        @*<th>
+                @Html.DisplayNameFor(model => model.Characteristic)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Sorting)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Small_Characteristic)
+            </th>*@
+        <th></th>
+    </tr >
+
+
+    <tr class="text-light">
+        <td>
+            @Html.DisplayNameFor(model => model.Small_Characteristic)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Small_Characteristic)
+        </td>
+        @*<td>
+                @Html.DisplayFor(modelItem => item.Characteristic)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Sorting)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Small_Characteristic)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+            </td>*@
+    </tr>
+    <tr>
+        <td></td>
+        <td>
+            @Html.ActionLink("Buy Car", "Buy_car", new { id = item.Id }) |
+            @Html.ActionLink("Details", "CarDetails", new { id = item.Id }) 
+        </td>
+
+
+    </tr>
+</table>
+
+}
+
+  </body>

@@ -1,0 +1,91 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> @ViewBag.Title  PASSAT</title>
+
+    @Scripts.Render("~/bundles/modernizr")
+    @Styles.Render("~/Content/bootstrap")
+    @Styles.Render("~/Content/jqueryui")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Styles.Render("~/Content/css")
+
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light m-0 fixed-top">
+        <a class="navbar-brand" href="#">VOLKSWAGEN</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    @Html.ActionLink("Main", "Index", new { controller = "Home" }, new { @class = "nav-link" })
+                </li>
+                <li class="nav-item">
+                    @Html.ActionLink("More Information", "More_information", new { controller = "Home" }, new { @class = "nav-link" })
+                </li>
+                <li class="nav-item">
+                    @Html.ActionLink("Interior", "Picture", new { controller = "Home" }, new { @class = "nav-link" })
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Account
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+
+                        @Html.ActionLink("Sign In", "Login", new { controller = "User" }, new { @class = "dropdown-item" })
+                        <div class="dropdown-divider"></div>
+                        @Html.ActionLink("Registration", "Register", new { controller = "User" }, new { @class = "dropdown-item" })
+                    </div>
+                </li>
+                <li class="nav-item">
+                    @Html.ActionLink("Buy", "Buy", new { controller = "Buy" }, new { @class = "nav-link" })
+                </li>
+            </ul>
+            <span class="navbar-text">
+                @if (User.Identity.Name.Length != 0)
+                {
+
+                    @User.Identity.Name
+
+                    @Html.ActionLink("Exit", "Exit", new { controller = "User" }, new { @class = "btn btn-danger m-2 h-20" })
+
+                }
+
+            </span>
+            @*<form class="form-inline my-2 my-lg-0">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                </form>*@
+        </div>
+    </nav>
+    <br><br>
+    <br><br>
+
+    @*<div class="container"> @Html.ActionLink("Admin", "Index",  new { area = "Admin", controller="Pages" })</div>*@
+    @RenderBody()
+
+    <footer class="page-footer font-small special-color-dark pt-4">
+
+        <div class="footer-copyright text-center py-3">
+            TROFIMCHUK IA-72
+
+        </div>
+
+
+    </footer>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+
+    @Scripts.Render("~/bundles/assets")
+    @Scripts.Render("~/bundles/js")
+    @Scripts.Render("~/bundles/MyJquery")
+
+    @RenderSection("scripts", required: false)
+
+</body>
+</html>

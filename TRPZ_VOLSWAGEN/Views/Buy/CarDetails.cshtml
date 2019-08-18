@@ -1,0 +1,54 @@
+﻿@model TRPZ_VOLSWAGEN.Models.ViewModels.Pages.PageVM
+
+@{
+    ViewBag.Title = "CarDetails";
+}
+<body class="bg-light container text-light">
+<h2>Details</h2>
+
+<div>
+
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Small_Characteristic)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Small_Characteristic)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Characteristic)
+        </dt>
+
+        <dd>
+            @Html.Raw(Model.Characteristic)
+        </dd>
+
+
+
+
+
+    </dl>
+</div>
+
+
+   @Html.ActionLink("Buy", "Buy_car", new { @class = "container btn btn-success btn-sm m-2" }) |
+   @Html.ActionLink("Back to Shop", "Buy", new { @class = "container btn btn-secondary btn-sm m-2" })
+
+    </body>
+@section Scripts
+{
+    <script>
+        CKEDITOR.replace("Characteristic")
+    </script>
+
+
+}

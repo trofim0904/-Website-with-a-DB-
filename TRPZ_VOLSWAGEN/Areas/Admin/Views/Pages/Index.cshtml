@@ -1,0 +1,81 @@
+﻿@model IEnumerable<TRPZ_VOLSWAGEN.Models.ViewModels.Pages.PageVM>
+
+@{
+    ViewBag.Title = "Pages";
+}
+
+<h2 class="m-2">Pages</h2>
+@if (TempData["SM"] != null)
+{
+    <div class="alert alert-success">
+         @TempData["SM"]
+    </div>
+}
+<p>
+    @Html.ActionLink("Create New Page", "AddPage","",new { @class="btn-success m-2 btn"})
+</p>
+
+@if (!Model.Any())
+{
+    <h1 class="text-center">There are no pages</h1>
+}
+else
+{ 
+
+<table class="table bg-white m-2 sorting" id="pages">
+    <tr class="home">
+        <th>
+           Name
+        </th>
+        <th>
+           Small Characteristic
+        </th>
+      
+        <th></th>
+    </tr>
+
+@foreach (var item in Model)
+    {
+    <tr id="@item.Id" class="@item.Characteristic">
+        <td>
+            <span class="ui-icon ui-icon-arrowthick-2-n-s"></span>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Small_Characteristic)
+        </td>
+       
+        <td>
+            @Html.ActionLink("Edit", "EditPage", new { id=item.Id }) |
+            @Html.ActionLink("Details", "PageDetails", new { id=item.Id }) | 
+            @Html.ActionLink("Delete", "DeletePage", new { id=item.Id }, new { @class="delete red"})
+        </td>
+    </tr>
+    }
+
+    </table>
+}
+@section Scripts
+{
+    <script>
+        $(function ()
+        {
+            $("a.delete").click(function () {
+                if (!confirm("Confirm page deletion")) return false;
+            });
+
+            /*****************************************************************/
+            $("table#pages tbody").sortable({
+                items : "tr:not(.home)",
+                placeholder: "ui-state-highlight",
+                update: function () {
+                    var ids = $("table#pages tbody").sortable("serialize");
+                    var url = "/Admin/Pages/ReorderPages";
+
+                    $.post(url, ids, function (data) {
+                    });
+                }
+            })
+        });
+    </script>
+}
